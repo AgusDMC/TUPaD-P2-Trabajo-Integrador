@@ -1,0 +1,54 @@
+AGREGAR EL CONECTOR AL PROYECTO
+
+En NetBeans:
+
+- Hacer clic derecho sobre el proyecto (TPI_Programacion2)
+
+- Seleccionar "Properties"
+
+- Ir a "Libraries"
+
+- En la sección "Classpath", hacer clic en el botón: Add JAR/Folder
+
+- Buscar y seleccionar el archivo: mysql-connector-j-9.x.x.jar
+
+- Aceptar y guardar los cambios.
+
+----------------------------------------------------------------------------
+
+CONFIGURAR DATOS DE CONEXIÓN EN EL PROYECTO
+
+- Abrir el archivo: src/config/DatabaseConnection.java
+
+- Modificar las siguientes líneas según los datos de cada uno:
+
+private static final String URL  = "jdbc:mysql://localhost:3306/tpi_usuarios?useSSL=false";
+private static final String USER = "root";    // colocar su usuario de MySQL
+private static final String PASS = "admin";   // colocar su contraseña de MySQL
+
+IMPORTANTE:
+
+- Si usan otro usuario o contraseña en MySQL, deben reemplazarlo aquí.
+- Si su MySQL no tiene contraseña, dejar PASS = "".
+
+----------------------------------------------------------------------------
+
+PROBAR LA CONEXIÓN CON JAVA
+
+- Ejecutar la clase: src/main/TestConexion.java
+
+- Si todo está bien, debería mostrar:
+
+Probando conexión a la base de datos...
+Conexión establecida correctamente.
+URL: jdbc:mysql://localhost:3306/tpi_usuarios?useSSL=false
+Usuario: root@localhost
+
+Si aparece un error:
+
+- Revisar USER y PASS
+
+- Revisar que MySQL esté iniciado
+
+- Revisar que el archivo .jar esté agregado al proyecto
+
