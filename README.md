@@ -1,212 +1,134 @@
-# ========================================================
-
 # Proyecto TPI Programación II
 
-# ========================================================
+## Sistema de Gestión de Usuarios y Credenciales (Java + MySQL)
 
-# 
+Este proyecto forma parte del Trabajo Práctico Integrador de la materia Programación II.  
 
-# \# TPI – Programación II  
+Implementa un sistema de gestión de usuarios basado en arquitectura por capas, con persistencia en MySQL y manejo de transacciones.
 
-# \## Sistema de Gestión de Usuarios y Credenciales (Java + MySQL)
+## FUNCIONALIDADES PRINCIPALES
 
-# 
+\- Crear Usuario + CredencialAcceso  
 
-# Este proyecto forma parte del Trabajo Práctico Integrador de la materia Programación II.  
+\- Listar usuarios activos  
 
-# Implementa un sistema de gestión de usuarios basado en arquitectura por capas, con persistencia en MySQL y manejo de transacciones.
+\- Buscar por email  
 
-# 
+\- Buscar por username  
 
-# ------------------------------------
+\- Buscar por ID  
 
-# FUNCIONALIDADES PRINCIPALES
+\- Actualizar datos  
 
-# ------------------------------------
+\- Eliminar (baja lógica)  
 
-# ✔ Crear Usuario + CredencialAcceso  
+\- Validaciones de negocio  
 
-# ✔ Listar usuarios activos  
+\- Transacciones (commit/rollback)  
 
-# ✔ Buscar por email  
+\- Interfaz por consola (AppMenu)
 
-# ✔ Buscar por username  
+## ARQUITECTURA
 
-# ✔ Buscar por ID  
+La estructura sigue el patrón de capas:
 
-# ✔ Actualizar datos  
+AppMenu → Service → DAO → DatabaseConnection → MySQL
 
-# ✔ Eliminar (baja lógica)  
+## CARPETAS:
 
-# ✔ Validaciones de negocio  
+src/
 
-# ✔ Transacciones (commit/rollback)  
+&nbsp;├── main/AppMenu.java
 
-# ✔ Interfaz por consola (AppMenu)
+&nbsp;├── service/ (reglas de negocio + transacciones)
 
-# 
+&nbsp;├── dao/ (JDBC + consultas SQL)
 
-# ------------------------------------
+&nbsp;├── entities/ (clases del dominio)
 
-# ARQUITECTURA
+&nbsp;└── config/DatabaseConnection.java
 
-# ------------------------------------
+## MODELO DE DATOS
 
-# La estructura sigue el patrón de capas:
+Tablas:
 
-# 
+\- Usuario
 
-# AppMenu → Service → DAO → DatabaseConnection → MySQL
+\- CredencialAcceso (FK UNIQUE usuario\_id)
 
-# 
+Ambas poseen el campo 'eliminado' para baja lógica.
 
-# CARPETAS:
+## Scripts incluidos:
 
-# src/
+\- creacion\_bd.sql
 
-# &nbsp;├── main/AppMenu.java
+\- inserts\_tabla\_usuario.sql
 
-# &nbsp;├── service/ (reglas de negocio + transacciones)
+\- inserts\_tabla\_credencialacceso.sql
 
-# &nbsp;├── dao/ (JDBC + consultas SQL)
+## REQUISITOS
 
-# &nbsp;├── entities/ (clases del dominio)
+\- Java 17+
 
-# &nbsp;└── config/DatabaseConnection.java
+\- NetBeans 18+
 
-# 
+\- MySQL Server 8.x
 
-# ------------------------------------
+\- MySQL Workbench
 
-# MODELO DE DATOS
+\- mysql-connector-j-9.0+
 
-# ------------------------------------
+## CÓMO EJECUTAR
 
-# Tablas:
+1\. Crear base de datos con creacion\_bd.sql
 
-# \- Usuario
+2\. Ejecutar inserts iniciales
 
-# \- CredencialAcceso (FK UNIQUE usuario\_id)
+3\. Configurar credenciales en DatabaseConnection.java:
 
-# 
+&nbsp;  URL, USER, PASS
 
-# Ambas poseen el campo 'eliminado' para baja lógica.
+4\. Agregar mysql-connector-j a las Libraries del proyecto
 
-# 
+5\. Ejecutar AppMenu.java
 
-# Scripts incluidos:
+## PRUEBAS RECOMENDADAS
 
-# \- creacion\_bd.sql
+\- Crear usuario + credencial  
 
-# \- inserts\_tabla\_usuario.sql
+\- Listar usuarios  
 
-# \- inserts\_tabla\_credencialacceso.sql
+\- Buscar por campos  
 
-# 
+\- Actualizar  
 
-# ------------------------------------
+\- Eliminar (baja lógica)  
 
-# REQUISITOS
+\- Verificar rollback ante error  
 
-# ------------------------------------
+## TECNOLOGÍAS
 
-# \- Java 17+
+Java – JDBC – MySQL – NetBeans – UMLet – GitHub – SQL
 
-# \- NetBeans 18+
+## EQUIPO
 
-# \- MySQL Server 8.x
+\- AMIRA YASMIN ELIZABETH ESPER – Diseño y Entidades 
 
-# \- MySQL Workbench
+\- LUCAS NAHUEL DUGO – Base de Datos (MySQL) 
 
-# \- mysql-connector-j-9.0+
+\- MANUEL DA CORTA – DAO
 
-# 
+\- AGUSTIN ECHEVERRIA ARAYA – Service y AppMenu
 
-# ------------------------------------
+## INTELIGENCIA ARTIFICIAL UTILIZADA
 
-# CÓMO EJECUTAR
+Se utilizó ChatGPT como herramienta de apoyo en explicación teórica, 
 
-# ------------------------------------
+formateo del informe, armado del README y revisión del código.  
 
-# 1\. Crear base de datos con creacion\_bd.sql
+La implementación final es del equipo.
 
-# 2\. Ejecutar inserts iniciales
+## LICENCIA
 
-# 3\. Configurar credenciales en DatabaseConnection.java:
-
-# &nbsp;  URL, USER, PASS
-
-# 4\. Agregar mysql-connector-j a las Libraries del proyecto
-
-# 5\. Ejecutar AppMenu.java
-
-# 
-
-# ------------------------------------
-
-# PRUEBAS RECOMENDADAS
-
-# ------------------------------------
-
-# \- Crear usuario + credencial  
-
-# \- Listar usuarios  
-
-# \- Buscar por campos  
-
-# \- Actualizar  
-
-# \- Eliminar (baja lógica)  
-
-# \- Verificar rollback ante error  
-
-# 
-
-# ------------------------------------
-
-# TECNOLOGÍAS
-
-# ------------------------------------
-
-# Java – JDBC – MySQL – NetBeans – UMLet – GitHub – SQL
-
-
-
-# ------------------------------------
-
-# EQUIPO
-
-# ------------------------------------
-
-# AMIRA YASMIN ELIZABETH ESPER – Diseño y Entidades 
-
-# LUCAS NAHUEL DUGO – Base de Datos (MySQL) 
-
-# MANUEL DA CORTA – DAO
-
-# AGUSTIN ECHEVERRIA ARAYA – Service y AppMenu
-
-# 
-
-# ------------------------------------
-
-# INTELIGENCIA ARTIFICIAL UTILIZADA
-
-# ------------------------------------
-
-# Se utilizó ChatGPT como herramienta de apoyo en explicación teórica, 
-
-# formateo del informe, armado del README y revisión del código.  
-
-# La implementación final es del equipo.
-
-# 
-
-# ------------------------------------
-
-# LICENCIA
-
-# ------------------------------------
-
-# Uso académico
+Uso académico
 
